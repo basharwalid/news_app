@@ -13,7 +13,7 @@ class CategoryItem extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage("assets/images/pattern")
+            image: AssetImage("assets/images/pattern.png")
           ),
           color: category.color,
           borderRadius: BorderRadius.only(topLeft:const Radius.circular(30),

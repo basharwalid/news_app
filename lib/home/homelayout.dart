@@ -91,7 +91,8 @@ class _homelayoutState extends State<homelayout> {
           )),
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: Text(SelectedCategorey == null
+            title: Text(
+                SelectedCategorey == null
                 ? SelectedSetting?"Setting": "News app"
                 : SelectedCategorey!.title),
             actions: SelectedCategorey == null
@@ -107,7 +108,7 @@ class _homelayoutState extends State<homelayout> {
           ),
           body:SelectedCategorey == null
               ? SelectedSetting?settingScreen():categoriesScreen(selectedCategory)
-              :HomeNewsFragment(),
+              :HomeNewsFragment(SelectedCategorey!),
         ));
   }
 

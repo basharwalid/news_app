@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newsapp/screens/articles/News_list.dart';
 import 'package:newsapp/ui/catergory/article_item.dart';
 import 'package:newsapp/ui/catergory/tab_item.dart';
 
@@ -33,16 +34,7 @@ class _articlesScreenState extends State<articlesScreen> {
                     .toList()?? []
     ),
             const SizedBox(height: 10),
-            Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.all(10),
-                itemBuilder: (context, index) => articleItem(),
-                separatorBuilder: (context, index) => SizedBox(
-                  height: 25,
-                ),
-                itemCount: 5,
-              ),
-            )
+            Expanded(child: NewsList(widget.sources![SelectedIndex]))
           ],
         ),
       ),

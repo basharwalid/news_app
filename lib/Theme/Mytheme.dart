@@ -8,6 +8,9 @@ class Mytheme{
   ThemeData themeData = ThemeData(
     primaryColor: green,
     appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(
+        fontSize: 20
+      ),
       backgroundColor: green,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
