@@ -13,7 +13,7 @@ class NewsList extends StatelessWidget {
   NewsListViewModel viewModel = NewsListViewModel();
   @override
   Widget build(BuildContext context) {
-    viewModel.loadNews(source?.id??"");
+    viewModel.loadNews(source?.id ?? "");
     return BlocBuilder<NewsListViewModel, NewsListViewState>(
       bloc: viewModel,
       builder: (context, state) {
@@ -21,7 +21,8 @@ class NewsList extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        }if (state is ErrorState) {
+        }
+        if (state is ErrorState) {
           return Center(
             child: Column(
               children: [
@@ -30,51 +31,18 @@ class NewsList extends StatelessWidget {
               ],
             ),
           );
-        }if(state is SuccessState){
+        }
+        if (state is SuccessState) {
           var newsList = state.newslist;
-              return ListView.builder(itemBuilder: (_, index) {
-                return NewsItem(newsList[index]);
-              },
-                itemCount: newsList.length,
-              );
+          return ListView.builder(
+            itemBuilder: (_, index) {
+              return NewsItem(newsList[index]);
+            },
+            itemCount: newsList.length,
+          );
         }
         return Container();
       },
     );
-    // return FutureBuilder<NewsResponse>(
-    //   future: apiManager.getNews(source.id??""),
-    //   builder: (context, snapshot) {
-    //     if(snapshot.connectionState == ConnectionState.waiting){
-    //       return const Center(child: CircularProgressIndicator(),);
-    //     }
-    //     if(snapshot.hasError){
-    //       return Center(
-    //         child: Column(
-    //           children: [
-    //             Text(snapshot.error.toString()),
-    //             ElevatedButton(onPressed: (){}, child: const Text("Try Again"))
-    //           ],
-    //         ),
-    //       );
-    //     }
-    //
-    //     if(snapshot.data!.status == "error"){
-    //       return Center(
-    //         child: Column(
-    //           children: [
-    //             Text(snapshot.data!.message??""),
-    //             ElevatedButton(onPressed: (){}, child: const Text("Try Again"))
-    //           ],
-    //         ),
-    //       );
-    //     }
-    //     var newsList = snapshot.data?.newsList;
-    //     return ListView.builder(itemBuilder: (_, index) {
-    //       return NewsItem(newsList![index]);
-    //     },
-    //       itemCount: newsList?.length??0,
-    //     );
-    //   },
-    // );
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:newsapp/api/model/sources_response/News.dart';
 import 'package:newsapp/api/model/sources_response/NewsResponse.dart';
+import 'package:newsapp/api/model/sources_response/Source.dart';
 import 'package:newsapp/api/model/sources_response/SourcesResponse.dart';
 
 class apiManager {
@@ -21,5 +23,19 @@ class apiManager {
     var url = Uri.https(baseUrl , "v2/everything" , {"apiKey": apiKey , 'sources' : sourceId});
     var response = await http.get(url);
     return NewsResponse.fromJson(jsonDecode(response.body));
+  }
+  static Future<NewsResponse> Searchin({String? dataSource , String? query}) async{
+    Uri url = Uri.https(
+        baseUrl,
+        "/v2/everything",
+        {
+          "apiKey" : apiKey ,
+          'sources' : dataSource ,
+          'q' : query ,
+        }
+    );
+    var response =  await http.get(url);
+    return NewsResponse.fromJson(jsonDecode(response.body));
+
   }
 }

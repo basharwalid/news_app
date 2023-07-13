@@ -6,6 +6,7 @@ import 'package:newsapp/screens/articles/articlesScreen.dart';
 import 'package:newsapp/screens/categories_screen/categories_screen.dart';
 import 'package:newsapp/screens/settings/settings_screen.dart';
 import 'package:newsapp/ui/catergory/categoryItem.dart';
+import 'package:newsapp/ui/searchScreen/SearchScreen.dart';
 
 import '../screens/home_news_fragment/home_news_fragment.dart';
 
@@ -99,7 +100,9 @@ class _homelayoutState extends State<homelayout> {
                 ? null
                 : [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, SearchScreen.routeName , arguments: SelectedCategorey!.categoryid);
+                        },
                         icon: const Icon(
                           Icons.search_rounded,
                           size: 30,
